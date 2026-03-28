@@ -208,7 +208,7 @@ import { AnimationService } from '../shared/animation.service';
             <div class="relative">
               <div class="absolute inset-0 bg-gradient-to-br from-accent to-blue-600 rounded-lg opacity-20 pulse-glow" style="filter: blur(20px);"></div>
               <div class="profile-card relative w-full h-96 flex items-center justify-center overflow-hidden">
-                <img src="/joaquin-profile.jpg" alt="Joaquín Fernández Redondo - Desarrollador Full Stack" 
+                 <img src="joaquin-profile.jpg" alt="Joaquín Fernández Redondo - Desarrollador Full Stack" 
                      class="profile-image rounded-lg opacity-90 transition-opacity duration-300" />
                 
                 <!-- Overlay con código decorativo -->
