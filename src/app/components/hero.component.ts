@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnimationService } from '../shared/animation.service';
 
 @Component({
   selector: 'app-hero',
@@ -34,26 +33,12 @@ import { AnimationService } from '../shared/animation.service';
           50% { transform: translateY(-20px); }
         }
 
-        @keyframes terminal-blink {
-          0%, 49% { opacity: 1; }
-          50%, 100% { opacity: 0; }
-        }
-
         .slide-up {
           animation: slideUp 0.8s ease-out forwards;
         }
 
         .glow-text {
           animation: glow 2s ease-in-out infinite;
-        }
-
-        .cursor {
-          display: inline-block;
-          width: 2px;
-          height: 1em;
-          background: rgb(59, 130, 246);
-          animation: terminal-blink 1s infinite;
-          margin-left: 4px;
         }
 
         .terminal-window {
@@ -111,7 +96,7 @@ import { AnimationService } from '../shared/animation.service';
             <div style="color: rgb(148, 163, 184);">Backend-first Full Stack Developer | APIs e integraciones</div>
             <div style="margin-top: 8px;">$ cat skills.txt</div>
             <div style="color: rgb(148, 163, 184); line-height: 2;">
-              {{ displayedText }}<span class="cursor" *ngIf="showCursor"></span>
+              <div *ngFor="let line of skillsLines">{{ line }}</div>
             </div>
           </div>
         </div>
@@ -143,46 +128,16 @@ import { AnimationService } from '../shared/animation.service';
           </button>
         </div>
 
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 slide-up" style="animation-delay: 0.8s">
-          <div class="flex flex-col items-center gap-2">
-            <span class="text-sm text-slate-400">Scroll to explore</span>
-            <div class="w-6 h-10 border-2 border-accent rounded-full flex justify-center">
-              <div class="w-1 h-2 bg-accent rounded-full mt-2 animate-bounce"></div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   `,
   styles: []
 })
-export class HeroComponent implements OnInit {
-  @ViewChild('terminal') terminalElement!: ElementRef;
-  
-  displayedText = '';
-  showCursor = true;
-  private fullText = 'Java • Spring Boot • Node.js • NestJS • PostgreSQL • Docker • TypeScript • Clean Architecture • Testing';
-
-  constructor(private animationService: AnimationService) {}
-
-  ngOnInit(): void {
-    this.startTypewriterEffect();
-  }
-
-  private startTypewriterEffect(): void {
-    this.showCursor = true;
-    this.displayedText = '';
-    this.animationService.typeWriter(this.fullText, 30).subscribe(
-      (text) => {
-        this.displayedText = text;
-      },
-      (error) => console.error('Error en typewriter:', error),
-      () => {
-        this.showCursor = false;
-      }
-    );
-  }
+export class HeroComponent {
+  skillsLines = [
+    'Java • Spring Boot • Node.js • NestJS',
+    'PostgreSQL • Docker • TypeScript • Testing'
+  ];
 
   scrollToProjects(): void {
     const projectsSection = document.getElementById('projects');
