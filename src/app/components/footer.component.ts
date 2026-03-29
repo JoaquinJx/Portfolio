@@ -9,7 +9,13 @@ import { Component } from '@angular/core';
         <div class="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 class="text-lg font-bold mb-4">Joaquín Fernández</h3>
-            <p class="text-slate-400">Full Stack Developer | Creando soluciones escalables y eficientes.</p>
+            <p class="text-slate-400">Backend-first Full Stack Developer | APIs e integraciones para productos web.</p>
+            <a
+              href="Joaquin_Fernandez_Redondo_CV.pdf"
+              download
+              class="inline-block mt-4 px-4 py-2 border border-accent text-accent rounded-lg hover:bg-accent/10 transition">
+              Descargar CV
+            </a>
           </div>
 
           <div>

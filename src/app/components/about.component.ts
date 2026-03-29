@@ -170,20 +170,19 @@ import { AnimationService } from '../shared/animation.service';
           <!-- Contenido de texto -->
           <div class="space-y-6 slide-in-left">
             <p class="text-slate-400 text-lg">
-              Soy un desarrollador apasionado enfocado en crear soluciones y aplicaciones escalables y eficientes. 
-              Cuento con experiencia sólida tanto en frontend como en backend, utilizando tecnologías modernas como React, 
-              Angular y Node.js para implementar soluciones innovadoras.
+              Me especializo en backend y arquitectura de APIs para productos web. Trabajo diseñando servicios mantenibles,
+              contratos claros entre sistemas e integraciones que evitan deuda técnica desde el inicio.
             </p>
             
             <p class="text-slate-400 text-lg">
-              Mi enfoque está en escribir código limpio siguiendo principios SOLID y Clean Architecture, asegurando que cada 
-              proyecto sea mantenible y escalable. Tengo experiencia en bases de datos relacionales, autenticación con JWT y 
-              Firebase, containerization con Docker, y en el desarrollo de APIs REST.
+              En los proyectos donde participo suelo liderar decisiones de estructura: modelo de dominio, separación por capas,
+              testing unitario y observabilidad básica. Me muevo con comodidad entre Node.js/NestJS, Java/Spring Boot,
+              PostgreSQL y despliegues con Docker.
             </p>
 
             <p class="text-slate-400 text-lg">
-              Soy un profesional en constante aprendizaje, listo para enfrentar nuevos desafíos y demostrar mis habilidades 
-              en un equipo dinámico.
+              Mi objetivo profesional es seguir creciendo en equipos de producto con exigencia técnica real,
+              donde el código tenga impacto directo en usuarios y negocio.
             </p>
 
             <!-- Stats -->
@@ -229,8 +228,9 @@ export class AboutComponent implements OnInit, AfterViewInit {
 
   codeSnippet = `const developer = {
   name: 'Joaquín',
-  passion: 'Clean Code',
-  motto: 'Build with Purpose'
+  focus: 'APIs e integraciones',
+  stack: ['Java', 'Spring Boot', 'Node.js'],
+  motto: 'Arquitectura limpia con impacto real'
 }`;
 
   constructor(private animationService: AnimationService) {}

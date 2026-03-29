@@ -8,7 +8,6 @@ import { ProjectsComponent } from './components/projects.component';
 import { SkillsComponent } from './components/skills.component';
 import { ContactComponent } from './components/contact.component';
 import { FooterComponent } from './components/footer.component';
-import { CustomCursorComponent } from './shared/custom-cursor.component';
 
 declare global {
   interface Window {
@@ -21,7 +20,6 @@ declare global {
   standalone: true,
   imports: [
     CommonModule,
-    CustomCursorComponent,
     HeaderComponent,
     HeroComponent,
     AboutComponent,
@@ -32,8 +30,6 @@ declare global {
     FooterComponent
   ],
   template: `
-    <app-custom-cursor></app-custom-cursor>
-    
     <app-header></app-header>
     <main class="pt-16">
       <app-hero></app-hero>

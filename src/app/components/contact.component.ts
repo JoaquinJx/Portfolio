@@ -50,13 +50,15 @@ import { CommonModule } from '@angular/common';
 
           <button 
             type="submit"
-            class="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 rounded-lg transition transform hover:scale-105">
-            Enviar Mensaje
+            [disabled]="submitState() === 'sending'"
+            class="w-full bg-accent hover:bg-accent-dark disabled:bg-slate-700 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition transform hover:scale-105 disabled:transform-none">
+            {{ submitState() === 'sending' ? 'Enviando...' : 'Enviar Mensaje' }}
           </button>
 
           <p *ngIf="submitMessage()" class="text-center text-sm" [ngClass]="{
-            'text-green-400': !submitMessage().startsWith('Error'),
-            'text-red-400': submitMessage().startsWith('Error')
+            'text-blue-300': submitState() === 'sending',
+            'text-green-400': submitState() === 'success',
+            'text-red-400': submitState() === 'error'
           }">
             {{ submitMessage() }}
           </p>
@@ -88,30 +90,44 @@ export class ContactComponent {
   };
 
   submitMessage = signal('');
+  submitState = signal<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   submitForm() {
+    this.submitState.set('idle');
     const name = this.formData.name.trim();
     const email = this.formData.email.trim();
     const message = this.formData.message.trim();
 
     if (!name || !email || !message) {
+      this.submitState.set('error');
       this.submitMessage.set('Error: completa todos los campos antes de enviar.');
       return;
     }
+
+    this.submitState.set('sending');
+    this.submitMessage.set('Enviando mensaje...');
 
     const subject = encodeURIComponent(`Consulta profesional desde mi portafolio - ${name}`);
     const body = encodeURIComponent(
       `Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${message}`
     );
 
-    // Fallback sin EmailJS: abre el cliente de correo del visitante con el mensaje pre-cargado.
-    window.location.href = `mailto:${this.contactEmail}?subject=${subject}&body=${body}`;
-
-    this.submitMessage.set('Se abrió tu cliente de correo con el mensaje listo para enviar.');
-    this.formData = { name: '', email: '', message: '' };
-
     setTimeout(() => {
-      this.submitMessage.set('');
-    }, 4000);
+      try {
+        // Fallback sin EmailJS/Formspree: abre el cliente de correo del visitante con el mensaje pre-cargado.
+        window.location.href = `mailto:${this.contactEmail}?subject=${subject}&body=${body}`;
+        this.submitState.set('success');
+        this.submitMessage.set('Mensaje preparado correctamente. Si no se abrió tu correo, escríbeme directamente a joaquin.fernandez2980@gmail.com.');
+        this.formData = { name: '', email: '', message: '' };
+      } catch {
+        this.submitState.set('error');
+        this.submitMessage.set('Error al preparar el mensaje. Escríbeme directamente a joaquin.fernandez2980@gmail.com.');
+      }
+
+      setTimeout(() => {
+        this.submitState.set('idle');
+        this.submitMessage.set('');
+      }, 5000);
+    }, 700);
   }
 }

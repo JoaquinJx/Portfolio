@@ -5,9 +5,12 @@ import { AnimationService } from '../shared/animation.service';
 interface Project {
   id: number;
   title: string;
-  description: string;
+  problem: string;
+  solution: string;
+  result: string;
   tags: string[];
-  link: string;
+  repository: string;
+  demo?: string;
   icon: string;
 }
 
@@ -183,7 +186,17 @@ interface Project {
               
               <h3 class="project-title">{{ project.title }}</h3>
               
-              <p class="project-description">{{ project.description }}</p>
+              <p class="project-description">
+                <strong class="text-slate-200">Problema:</strong> {{ project.problem }}
+              </p>
+
+              <p class="project-description">
+                <strong class="text-slate-200">Solución:</strong> {{ project.solution }}
+              </p>
+
+              <p class="project-description">
+                <strong class="text-slate-200">Resultado:</strong> {{ project.result }}
+              </p>
               
               <div class="project-tags">
                 <span 
@@ -194,9 +207,20 @@ interface Project {
               </div>
               
               <a 
-                [href]="project.link"
+                [href]="project.repository"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="project-link">
-                Más información →
+                Ver repositorio →
+              </a>
+
+              <a
+                *ngIf="project.demo"
+                [href]="project.demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link ml-4">
+                Ver demo →
               </a>
             </div>
           </div>
@@ -215,9 +239,12 @@ export class ProjectsComponent implements AfterViewInit {
     {
       id: 1,
       title: 'Plataforma Ecoturismo',
-      description: 'Plataforma de turismo sostenible con gestión de reservas, pagos integrados y panel administrativo. Diseñada para conectar turistas con experiencias eco-responsables.',
+      problem: 'La operación manual de reservas y pagos generaba errores y fricción para brokers y usuarios finales.',
+      solution: 'Diseñé una plataforma con backend en Node.js y PostgreSQL, autenticación JWT, APIs para reservas y panel administrativo para trazabilidad completa.',
+      result: 'Se centralizó el flujo operativo en una única aplicación, reduciendo tareas manuales y mejorando el control de datos del negocio.',
       tags: ['React', 'Node.js', 'PostgreSQL', 'JWT', 'Docker'],
-      link: 'https://www.ecoturismo.com/',
+      repository: 'https://github.com/JoaquinJx',
+      demo: 'https://www.ecoturismo.com/',
       icon: '🌍'
     }
   ];

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnimationService } from '../shared/animation.service';
 
@@ -108,7 +108,7 @@ import { AnimationService } from '../shared/animation.service';
           </div>
           <div class="space-y-2">
             <div>$ whoami</div>
-            <div style="color: rgb(148, 163, 184);">Full Stack Developer | Innovator</div>
+            <div style="color: rgb(148, 163, 184);">Backend-first Full Stack Developer | APIs e integraciones</div>
             <div style="margin-top: 8px;">$ cat skills.txt</div>
             <div style="color: rgb(148, 163, 184); line-height: 2;">
               {{ displayedText }}<span class="cursor" *ngIf="showCursor"></span>
@@ -117,7 +117,11 @@ import { AnimationService } from '../shared/animation.service';
         </div>
         
         <p class="text-xl md:text-2xl text-slate-400 mb-8 slide-up" style="animation-delay: 0.2s">
-          Creando soluciones escalables, eficientes e innovadoras
+          Diseño y construyo APIs robustas para productos SaaS, con foco en arquitectura limpia, rendimiento y mantenibilidad.
+        </p>
+
+        <p class="text-base md:text-lg text-slate-500 mb-8 max-w-3xl mx-auto slide-up" style="animation-delay: 0.3s">
+          Busco oportunidades como desarrollador backend/full stack para resolver retos reales de negocio con Java, Spring Boot, Node.js y TypeScript.
         </p>
 
         <div class="flex gap-4 justify-center flex-wrap slide-up" style="animation-delay: 0.4s">
@@ -126,10 +130,16 @@ import { AnimationService } from '../shared/animation.service';
             (click)="scrollToProjects()">
             <span class="block">Ver Proyectos</span>
           </button>
-          <button 
-            class="group px-8 py-3 border-2 border-accent text-accent hover:bg-accent/10 rounded-lg transition transform hover:scale-105 hover:shadow-lg hover:shadow-accent/30"
-            (click)="downloadCV()">
+          <a
+            href="Joaquin_Fernandez_Redondo_CV.pdf"
+            download
+            class="group px-8 py-3 border-2 border-accent text-accent hover:bg-accent/10 rounded-lg transition transform hover:scale-105 hover:shadow-lg hover:shadow-accent/30">
             <span class="block">Descargar CV</span>
+          </a>
+          <button
+            class="group px-8 py-3 border-2 border-slate-600 text-slate-200 hover:bg-slate-800 rounded-lg transition transform hover:scale-105"
+            (click)="scrollToContact()">
+            <span class="block">Contactar</span>
           </button>
         </div>
 
@@ -152,7 +162,7 @@ export class HeroComponent implements OnInit {
   
   displayedText = '';
   showCursor = true;
-  private fullText = 'TypeScript • JavaScript • Node.js • NestJS • React • Angular • PostgreSQL • Docker • Test unitarios';
+  private fullText = 'Java • Spring Boot • Node.js • NestJS • PostgreSQL • Docker • TypeScript • Clean Architecture • Testing';
 
   constructor(private animationService: AnimationService) {}
 
@@ -174,11 +184,6 @@ export class HeroComponent implements OnInit {
     );
   }
 
-  @HostListener('window:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent): void {
-    // Efecto de glow que sigue al mouse (opcional, para futuros enhancements)
-  }
-
   scrollToProjects(): void {
     const projectsSection = document.getElementById('projects');
     if (projectsSection) {
@@ -186,13 +191,10 @@ export class HeroComponent implements OnInit {
     }
   }
 
-  downloadCV(): void {
-    // Crear un enlace temporal para descargar el CV
-    const link = document.createElement('a');
-    link.href = 'Joaquin_Fernandez_Redondo_CV.pdf'; // Ruta relativa al archivo en public/
-    link.download = 'Joaquin_Fernandez_Redondo_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  scrollToContact(): void {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
