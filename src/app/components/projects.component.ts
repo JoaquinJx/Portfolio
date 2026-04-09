@@ -246,6 +246,17 @@ export class ProjectsComponent implements AfterViewInit {
       repository: 'https://github.com/JoaquinJx',
       demo: 'https://www.ecoturismo.com/',
       icon: '🌍'
+    },
+    {
+      id: 2,
+      title: 'Mercat Commerce Suite',
+      problem: 'Las tiendas gestionaban su catálogo e inventario de forma manual con hojas de cálculo, lo que provocaba quiebres de stock, pérdida de ventas y falta de visibilidad en temporada alta.',
+      solution: 'Desarrollé una plataforma e-commerce completa con vitrina pública de productos, carrito de compras, checkout y un backoffice centralizado para que los equipos gestionen el inventario en tiempo real por categorías (Moda, Hogar, Tecnología, Belleza).',
+      result: 'Plataforma en producción que permite a las tiendas activarse en minutos, controlar el stock en tiempo real y ofrecer una experiencia de compra premium a sus clientes.',
+      tags: ['Angular', 'Tailwind CSS', 'Java', 'Spring Boot', 'Vercel', 'Render'],
+      repository: 'https://github.com/JoaquinJx',
+      demo: 'https://frontend-inventory-ashen.vercel.app/',
+      icon: '🛒'
     }
   ];
 
