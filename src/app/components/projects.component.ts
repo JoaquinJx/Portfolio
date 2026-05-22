@@ -257,6 +257,17 @@ export class ProjectsComponent implements AfterViewInit {
       repository: 'https://github.com/JoaquinJx',
       demo: 'https://frontend-inventory-ashen.vercel.app/',
       icon: '🛒'
+    },
+    {
+      id: 3,
+      title: 'Wellness Hub',
+      problem: 'Los usuarios carecían de una plataforma unificada para registrar y analizar sus métricas de salud: actividad física, nutrición, sueño, hidratación, meditación y bienestar mental dispersos en distintas apps.',
+      solution: 'Construí una aplicación full-stack con React y NestJS que centraliza el seguimiento en módulos especializados, con autenticación 2FA, chatbot de nutrición, exportación PDF/CSV, gráficos estadísticos interactivos, gamificación por logros y soporte multiidioma como PWA instalable.',
+      result: 'Plataforma modular que permite monitorear el bienestar completo con visualizaciones en tiempo real, accesible desde cualquier dispositivo como app instalable y con pipeline CI automatizado.',
+      tags: ['React', 'TypeScript', 'NestJS', 'Prisma', 'Tailwind CSS', 'Zustand', 'Recharts', 'PWA'],
+      repository: 'https://github.com/JoaquinJx',
+      demo: 'https://wellness-hub-frontend-seven.vercel.app/',
+      icon: '🩺'
     }
   ];
 
